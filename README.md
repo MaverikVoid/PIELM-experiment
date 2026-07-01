@@ -15,16 +15,22 @@ As the diffusion coefficient $\nu \to 0$, a sharp boundary layer forms near $x =
 3. **PINN (Adam)**: Standard Physics-Informed Neural Network architecture trained using standard Adam optimization.
 4. **PINN (L-BFGS)**: Standard PINN architecture trained using L-BFGS optimization with `strong_wolfe` line search.
 5. **SCIO Optimizer**: Baseline metrics for the curvature-aware hybrid SCIO optimizer are loaded and plotted from reference results for comparison.
+6. **RAR-SCIO**: SCIO optimizer trained using Residual-based Adaptive Refinement (RAR), accumulating high-residual collocation points in a feedback loop.
+7. **RAD-SCIO**: SCIO optimizer trained using Residual-based Adaptive Distribution (RAD), resampling all collocation points from a probability distribution proportional to $|R(x)| + 1$.
 
 ---
 
 ## Repository Structure
 
-- `convdiff_benchmark.py`: Core execution script. Contains validation gates (monotonic blowup verification of Vanilla-PIELM, KAPI-ELM recovery testing at $\nu=10^{-4}$), localized training sweeps, and plotting scripts.
+- `convdiff_benchmark.py`: Core execution script for baseline runs. Contains validation gates, localized training sweeps, and plotting scripts.
+- `convdiff_ras_benchmark.py`: Execution script for the Residual Adaptive Sampling benchmark (RAR-SCIO and RAD-SCIO sweeps across all scales and seeds).
 - `merge_and_run_pinns.py`: Aggregates the long-running KAPI-ELM/Vanilla-PIELM optimization results from Kaggle with local GPU training of PINN methods (`Adam`, `L-BFGS`) and plots the final benchmark results.
-- `soft_kapi_ref/`: MATLAB reference scripts for reproducing results submitted in the article *"Soft Partition-based KAPI-ELM for Multi-Scale PDEs"* (submitted to IEEE Transactions on AI).
+- `soft_kapi_ref/`: MATLAB reference scripts for reproducing results submitted in the article *"Soft Partition-based KAPI-ELM for Multi-Scale PDEs"*.
 - `kaggle_output/`: Contains pre-computed Vanilla-PIELM, KAPI-ELM, and SCIO comparative result sheets.
-- `convdiff_results/`: Pre-computed local run outputs and comparison plots.
+- `convdiff_results/`: Pre-computed local run outputs, comparison plots, and adaptive sampling report.
+  - `results_ras.csv`: CSV file compiling all metrics from the adaptive sampling runs.
+  - `Dwivedi_SCIO_RAS_report.docx`: Formatted detailed Word report with tables, prediction plots, and collocation point histograms.
+  - `ras_plots/`: Directory containing generated prediction curves and RAR histograms.
 
 ---
 
@@ -87,4 +93,13 @@ The benchmark outputs show the mean relative $L^2$ error across three seeds (42,
 | **KAPI-ELM** | $7.457 \times 10^{-8}$ | $5.767 \times 10^{-8}$ | $8.740 \times 10^{-7}$ | $1.983 \times 10^{-4}$ | $5.249$ |
 | **Adam** | $1.017 \times 10^{-2}$ | $7.744$ | $20.55$ | $25.92$ | $25.92$ |
 | **L-BFGS** | $2.297 \times 10^{-4}$ | $5.178$ | $23.47$ | $26.52$ | $29.25$ |
-| **SCIO** | $3.244 \times 10^{-3}$ | $5.184$ | $23.19$ | $29.19$ | $22.37$ |
+| **SCIO (Uniform)** | $3.244 \times 10^{-3}$ | $5.184$ | $23.19$ | $29.19$ | $22.37$ |
+| **RAR-SCIO** | $2.906 \times 10^{-3}$ | $7.549$ | $21.65$ | $23.73$ | $24.37$ |
+| **RAD-SCIO** | $5.931 \times 10^{-4}$ | $7.622$ | $20.22$ | $25.39$ | $25.50$ |
+
+### Why Residual Adaptive Resampling Fails (Feedback Lock)
+Our experiments confirm Dr. Vikas Dwivedi's hypothesis that residual adaptive sampling is unable to escape training failure modes on stiff singularly-perturbed equations. The reason is a **feedback lock**:
+1. When the network gets stuck at initialization (predicting a flat, near-zero profile), the interior PDE derivatives $u_x$ and $u_{xx}$ evaluate to $\approx 0$.
+2. This creates a degenerate, uniformly near-zero residual landscape, yielding no adaptive sampling signals to RAD.
+3. For RAR, the mismatch strictly at the boundary condition ($u(1)=1$ vs. $0.0$) spikes, prompting the algorithm to pile up almost all collocation points on the boundary ($x \approx 0.0$ and $x \approx 1.0$), leaving the interior boundary layer completely unrepresented.
+4. Without collocation points inside the physical transition zone ($x \approx 0.99$), the network never receives the gradient signals required to escape the initialization state, locking it permanently.
