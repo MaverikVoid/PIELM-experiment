@@ -48,30 +48,6 @@ def load_kaggle_rows(csv_path: Path) -> list[dict]:
             })
     return rows
 
-def load_scio_rows(csv_path: Path) -> list[dict]:
-    rows = []
-    if not csv_path.exists():
-        return rows
-    with open(csv_path, mode="r", encoding="utf-8") as f:
-        reader = csv.DictReader(f)
-        for r in reader:
-            if r["method"] != "SCIO":
-                continue
-            rows.append({
-                "method": "SCIO",
-                "nu": float(r["nu"]),
-                "seed": int(r["seed"]),
-                "rel_l2": float(r["rel_l2"]) if r["rel_l2"] != "nan" else float("nan"),
-                "wall_time_s": float(r["wall_time_s"]) if r["wall_time_s"] != "nan" else float("nan"),
-                "final_loss": float(r["final_loss"]) if r["final_loss"] != "nan" else float("nan"),
-                "final_nfe": int(r["final_nfe"]),
-                "nan_divergence": r["nan_divergence"] == "True",
-                "inf_norm_J": float(r["inf_norm_J"]) if r["inf_norm_J"] != "nan" else float("nan"),
-                "best_w": float(r["best_w"]) if r["best_w"] != "nan" else float("nan"),
-                "failure_mode": r["failure_mode"],
-            })
-    return rows
-
 def main():
     workspace_dir = Path(__file__).resolve().parent
     kaggle_csv = workspace_dir / "kaggle_output" / "convdiff_results" / "results.csv"
@@ -116,14 +92,8 @@ def main():
         merged_rows = load_kaggle_rows(kaggle_csv)
         print(f"Loaded {len(merged_rows)} rows from Kaggle (Vanilla-PIELM and KAPI-ELM).")
 
-        # Load pre-computed SCIO results
-        scio_csv = workspace_dir / "kaggle_output" / "convdiff_results" / "scio_results.csv"
-        scio_rows = load_scio_rows(scio_csv)
-        merged_rows.extend(scio_rows)
-        print(f"Loaded {len(scio_rows)} pre-computed SCIO rows.")
-
-        # Now run the local PINN methods on local GPU (excluding SCIO)
-        pinn_methods = ["Adam", "L-BFGS"]
+        # Now run the local PINN methods on local GPU
+        pinn_methods = ["SCIO", "Adam", "L-BFGS"]
         print("\n" + "=" * 70)
         print("RUNNING PINN METHODS LOCALLY (ON GPU)")
         print("=" * 70)

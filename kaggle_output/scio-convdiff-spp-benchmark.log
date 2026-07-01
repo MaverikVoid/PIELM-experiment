@@ -1,0 +1,473 @@
+[{"stream_name":"stdout","time":11.989494179,"data":"Device: cuda\n"}
+,{"stream_name":"stderr","time":12.010603266,"data":"/usr/local/lib/python3.12/dist-packages/torch/cuda/__init__.py:435: UserWarning: \n"}
+,{"stream_name":"stderr","time":12.010651652,"data":"    Found GPU0 Tesla P100-PCIE-16GB which is of cuda capability 6.0.\n"}
+,{"stream_name":"stderr","time":12.010657737,"data":"    Minimum and Maximum cuda capability supported by this version of PyTorch is\n"}
+,{"stream_name":"stderr","time":12.010662165,"data":"    (7.0) - (12.0)\n"}
+,{"stream_name":"stderr","time":12.010666464,"data":"    \n"}
+,{"stream_name":"stderr","time":12.010670973,"data":"  queued_call()\n"}
+,{"stream_name":"stderr","time":12.010674775,"data":"/usr/local/lib/python3.12/dist-packages/torch/cuda/__init__.py:435: UserWarning: \n"}
+,{"stream_name":"stderr","time":12.010678549,"data":"    Please install PyTorch with a following CUDA\n"}
+,{"stream_name":"stderr","time":12.010682222,"data":"    configurations:  12.6 following instructions at\n"}
+,{"stream_name":"stderr","time":12.010686226,"data":"    https://pytorch.org/get-started/locally/\n"}
+,{"stream_name":"stderr","time":12.010717173,"data":"    \n"}
+,{"stream_name":"stderr","time":12.010722253,"data":"  queued_call()\n"}
+,{"stream_name":"stderr","time":12.010815894,"data":"/usr/local/lib/python3.12/dist-packages/torch/cuda/__init__.py:435: UserWarning: \n"}
+,{"stream_name":"stderr","time":12.01083469,"data":"Tesla P100-PCIE-16GB with CUDA capability sm_60 is not compatible with the current PyTorch installation.\n"}
+,{"stream_name":"stderr","time":12.010839997,"data":"The current PyTorch install supports CUDA capabilities sm_70 sm_75 sm_80 sm_86 sm_90 sm_100 sm_120.\n"}
+,{"stream_name":"stderr","time":12.010845019,"data":"If you want to use the Tesla P100-PCIE-16GB GPU with PyTorch, please check the instructions at https://pytorch.org/get-started/locally/\n"}
+,{"stream_name":"stderr","time":12.010849504,"data":"\n"}
+,{"stream_name":"stderr","time":12.010853633,"data":"  queued_call()\n"}
+,{"stream_name":"stdout","time":12.01251786,"data":"GPU: Tesla P100-PCIE-16GB\n"}
+,{"stream_name":"stdout","time":12.014424728,"data":"\n"}
+,{"stream_name":"stdout","time":12.01446308,"data":"######################################################################\n"}
+,{"stream_name":"stdout","time":12.01446894,"data":"# VALIDATION GATES\n"}
+,{"stream_name":"stdout","time":12.014473554,"data":"######################################################################\n"}
+,{"stream_name":"stdout","time":12.014477898,"data":"======================================================================\n"}
+,{"stream_name":"stdout","time":12.014482796,"data":"VALIDATION GATE 1: Vanilla PIELM monotonic blowup\n"}
+,{"stream_name":"stdout","time":12.014487112,"data":"======================================================================\n"}
+,{"stream_name":"stdout","time":12.141774346,"data":"  nu=1e-01  rel_l2=0.0001  J=1.773e-03  [OK]\n"}
+,{"stream_name":"stdout","time":12.202842091,"data":"  nu=1e-02  rel_l2=1.6155  J=1.318e-01  [OK]\n"}
+,{"stream_name":"stdout","time":12.25996611,"data":"  nu=1e-03  rel_l2=17.7634  J=4.999e-01  [OK]\n"}
+,{"stream_name":"stdout","time":12.317912725,"data":"  nu=1e-04  rel_l2=22.3599  J=4.999e-01  [OK]\n"}
+,{"stream_name":"stdout","time":12.317950159,"data":"GATE 1 PASSED\n"}
+,{"stream_name":"stdout","time":12.31795797,"data":"\n"}
+,{"stream_name":"stdout","time":12.318019586,"data":"======================================================================\n"}
+,{"stream_name":"stdout","time":12.318055764,"data":"VALIDATION GATE 2: KAPI-ELM recovery at nu=1e-4\n"}
+,{"stream_name":"stdout","time":12.318153187,"data":"======================================================================\n"}
+,{"stream_name":"stdout","time":12.318272339,"data":"  Running KAPI-ELM fit at nu=0.0001, N=1000, n_calls=25...\n"}
+,{"stream_name":"stdout","time":469.013779764,"data":"  KAPI-ELM: rel_l2=0.000281, best_w=0.9900, J=1.977e-04, time=453.3s\n"}
+,{"stream_name":"stdout","time":469.013895234,"data":"  Vanilla PIELM: rel_l2=22.3599\n"}
+,{"stream_name":"stdout","time":469.013903494,"data":"  Improvement factor: 79569.1x\n"}
+,{"stream_name":"stdout","time":469.013908749,"data":"GATE 2 PASSED\n"}
+,{"stream_name":"stdout","time":469.013914346,"data":"\n"}
+,{"stream_name":"stdout","time":469.014009229,"data":"\n"}
+,{"stream_name":"stdout","time":469.014107083,"data":"######################################################################\n"}
+,{"stream_name":"stdout","time":469.014176018,"data":"# FULL EXPERIMENT SWEEP\n"}
+,{"stream_name":"stdout","time":469.014265362,"data":"######################################################################\n"}
+,{"stream_name":"stdout","time":469.014626324,"data":"\n"}
+,{"stream_name":"stdout","time":469.014633334,"data":"======================================================================\n"}
+,{"stream_name":"stdout","time":469.014745719,"data":"RUNNING: Vanilla PIELM\n"}
+,{"stream_name":"stdout","time":469.014754095,"data":"======================================================================\n"}
+,{"stream_name":"stdout","time":469.085814218,"data":"  nu=1e-01 seed=42: rel_l2=0.000850  J=3.947e-03  time=0.07s\n"}
+,{"stream_name":"stdout","time":469.151327421,"data":"  nu=1e-01 seed=123: rel_l2=0.003301  J=9.520e-03  time=0.07s\n"}
+,{"stream_name":"stdout","time":469.218586395,"data":"  nu=1e-01 seed=7: rel_l2=0.000145  J=1.867e-03  time=0.07s\n"}
+,{"stream_name":"stdout","time":469.283416482,"data":"  nu=1e-02 seed=42: rel_l2=4.799976  J=3.517e-01  time=0.06s\n"}
+,{"stream_name":"stdout","time":469.348113796,"data":"  nu=1e-02 seed=123: rel_l2=5.654173  J=4.145e-01  time=0.06s\n"}
+,{"stream_name":"stdout","time":469.410573689,"data":"  nu=1e-02 seed=7: rel_l2=2.087811  J=1.529e-01  time=0.06s\n"}
+,{"stream_name":"stdout","time":469.475779517,"data":"  nu=1e-03 seed=42: rel_l2=17.763582  J=4.999e-01  time=0.06s\n"}
+,{"stream_name":"stdout","time":469.538180099,"data":"  nu=1e-03 seed=123: rel_l2=17.763515  J=4.999e-01  time=0.06s\n"}
+,{"stream_name":"stdout","time":469.603909811,"data":"  nu=1e-03 seed=7: rel_l2=17.763553  J=4.999e-01  time=0.07s\n"}
+,{"stream_name":"stdout","time":469.668732401,"data":"  nu=1e-04 seed=42: rel_l2=22.360013  J=4.999e-01  time=0.06s\n"}
+,{"stream_name":"stdout","time":469.735435867,"data":"  nu=1e-04 seed=123: rel_l2=22.359935  J=4.999e-01  time=0.07s\n"}
+,{"stream_name":"stdout","time":469.80202273,"data":"  nu=1e-04 seed=7: rel_l2=22.360034  J=4.999e-01  time=0.07s\n"}
+,{"stream_name":"stdout","time":469.869991889,"data":"  nu=1e-05 seed=42: rel_l2=22.360669  J=4.999e-01  time=0.07s\n"}
+,{"stream_name":"stdout","time":469.937103232,"data":"  nu=1e-05 seed=123: rel_l2=22.360592  J=4.999e-01  time=0.07s\n"}
+,{"stream_name":"stdout","time":470.004517607,"data":"  nu=1e-05 seed=7: rel_l2=22.360694  J=4.999e-01  time=0.07s\n"}
+,{"stream_name":"stdout","time":470.004603465,"data":"\n"}
+,{"stream_name":"stdout","time":470.004612736,"data":"======================================================================\n"}
+,{"stream_name":"stdout","time":470.004622615,"data":"RUNNING: KAPI-ELM (BO over partition width)\n"}
+,{"stream_name":"stdout","time":470.004671825,"data":"======================================================================\n"}
+,{"stream_name":"stdout","time":922.345454569,"data":"  nu=1e-01 seed=42: fitting... rel_l2=0.000000  best_w=0.9413  J=3.569e-06  time=452.2s\n"}
+,{"stream_name":"stdout","time":1375.562774964,"data":"  nu=1e-01 seed=123: fitting... rel_l2=0.000000  best_w=0.9386  J=3.749e-06  time=453.1s\n"}
+,{"stream_name":"stdout","time":1827.474489277,"data":"  nu=1e-01 seed=7: fitting... rel_l2=0.000000  best_w=0.9419  J=3.584e-06  time=451.8s\n"}
+,{"stream_name":"stdout","time":2273.102864229,"data":"  nu=1e-02 seed=42: fitting... rel_l2=0.000000  best_w=0.9413  J=5.087e-07  time=445.5s\n"}
+,{"stream_name":"stdout","time":2712.727846342,"data":"  nu=1e-02 seed=123: fitting... rel_l2=0.000000  best_w=0.9386  J=5.364e-07  time=439.5s\n"}
+,{"stream_name":"stdout","time":3151.809448134,"data":"  nu=1e-02 seed=7: fitting... rel_l2=0.000000  best_w=0.9419  J=5.102e-07  time=438.9s\n"}
+,{"stream_name":"stdout","time":3590.733448348,"data":"  nu=1e-03 seed=42: fitting... rel_l2=0.000001  best_w=0.9537  J=7.357e-07  time=438.8s\n"}
+,{"stream_name":"stdout","time":4017.336766218,"data":"  nu=1e-03 seed=123: fitting... rel_l2=0.000001  best_w=0.9522  J=7.074e-07  time=426.5s\n"}
+,{"stream_name":"stdout","time":4457.080897296,"data":"  nu=1e-03 seed=7: fitting... rel_l2=0.000001  best_w=0.9472  J=7.409e-07  time=439.6s\n"}
+,{"stream_name":"stdout","time":4897.032850533,"data":"  nu=1e-04 seed=42: fitting... rel_l2=0.000281  best_w=0.9900  J=1.977e-04  time=439.8s\n"}
+,{"stream_name":"stdout","time":5328.158251007,"data":"  nu=1e-04 seed=123: fitting... rel_l2=0.000059  best_w=0.9900  J=2.000e-04  time=431.0s\n"}
+,{"stream_name":"stdout","time":5759.016794496,"data":"  nu=1e-04 seed=7: fitting... rel_l2=0.000255  best_w=0.9900  J=1.974e-04  time=430.7s\n"}
+,{"stream_name":"stderr","time":5969.49086078,"data":"/usr/local/lib/python3.12/dist-packages/skopt/optimizer/optimizer.py:517: UserWarning: The objective has been evaluated at point [0.99] before, using random point [0.9643609510407332]\n"}
+,{"stream_name":"stderr","time":5969.490917587,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":6004.80853649,"data":"/usr/local/lib/python3.12/dist-packages/skopt/optimizer/optimizer.py:517: UserWarning: The objective has been evaluated at point [0.99] before, using random point [0.934997404001828]\n"}
+,{"stream_name":"stderr","time":6004.808612253,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":6022.319911064,"data":"/usr/local/lib/python3.12/dist-packages/skopt/optimizer/optimizer.py:517: UserWarning: The objective has been evaluated at point [0.99] before, using random point [0.9603116942852131]\n"}
+,{"stream_name":"stderr","time":6022.319968905,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":6039.824427869,"data":"/usr/local/lib/python3.12/dist-packages/skopt/optimizer/optimizer.py:517: UserWarning: The objective has been evaluated at point [0.99] before, using random point [0.9040044365961448]\n"}
+,{"stream_name":"stderr","time":6039.824477402,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":6057.548480419,"data":"/usr/local/lib/python3.12/dist-packages/skopt/optimizer/optimizer.py:517: UserWarning: The objective has been evaluated at point [0.99] before, using random point [0.9504174907795223]\n"}
+,{"stream_name":"stderr","time":6057.548540598,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":6075.025482807,"data":"/usr/local/lib/python3.12/dist-packages/skopt/optimizer/optimizer.py:517: UserWarning: The objective has been evaluated at point [0.99] before, using random point [0.9890211768884587]\n"}
+,{"stream_name":"stderr","time":6075.025548792,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":6092.556843424,"data":"/usr/local/lib/python3.12/dist-packages/skopt/optimizer/optimizer.py:517: UserWarning: The objective has been evaluated at point [0.99] before, using random point [0.9508239510866335]\n"}
+,{"stream_name":"stderr","time":6092.556904895,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":6110.267974251,"data":"/usr/local/lib/python3.12/dist-packages/skopt/optimizer/optimizer.py:517: UserWarning: The objective has been evaluated at point [0.99] before, using random point [0.9262496824094888]\n"}
+,{"stream_name":"stderr","time":6110.268031258,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":6127.681144957,"data":"/usr/local/lib/python3.12/dist-packages/skopt/optimizer/optimizer.py:517: UserWarning: The objective has been evaluated at point [0.99] before, using random point [0.908992271383611]\n"}
+,{"stream_name":"stderr","time":6127.681201392,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":6145.874777475,"data":"/usr/local/lib/python3.12/dist-packages/skopt/optimizer/optimizer.py:517: UserWarning: The objective has been evaluated at point [0.99] before, using random point [0.9379018479886794]\n"}
+,{"stream_name":"stderr","time":6145.874827943,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":6163.996916296,"data":"/usr/local/lib/python3.12/dist-packages/skopt/optimizer/optimizer.py:517: UserWarning: The objective has been evaluated at point [0.99] before, using random point [0.9706172302237162]\n"}
+,{"stream_name":"stderr","time":6163.996970216,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":6181.694769306,"data":"/usr/local/lib/python3.12/dist-packages/skopt/optimizer/optimizer.py:517: UserWarning: The objective has been evaluated at point [0.99] before, using random point [0.9302098552577792]\n"}
+,{"stream_name":"stderr","time":6181.694817448,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":6217.780739407,"data":"  nu=1e-05 seed=42: fitting... rel_l2=4.449522  best_w=0.9900  J=4.428e-02  time=458.6s\n"}
+,{"stream_name":"stderr","time":6425.836789215,"data":"/usr/local/lib/python3.12/dist-packages/skopt/optimizer/optimizer.py:517: UserWarning: The objective has been evaluated at point [0.99] before, using random point [0.928301680903182]\n"}
+,{"stream_name":"stderr","time":6425.836844691,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":6443.336098859,"data":"/usr/local/lib/python3.12/dist-packages/skopt/optimizer/optimizer.py:517: UserWarning: The objective has been evaluated at point [0.99] before, using random point [0.9612241227395504]\n"}
+,{"stream_name":"stderr","time":6443.336151497,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":6461.089533224,"data":"/usr/local/lib/python3.12/dist-packages/skopt/optimizer/optimizer.py:517: UserWarning: The objective has been evaluated at point [0.99] before, using random point [0.9886083715580231]\n"}
+,{"stream_name":"stderr","time":6461.089582193,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":6478.578770895,"data":"/usr/local/lib/python3.12/dist-packages/skopt/optimizer/optimizer.py:517: UserWarning: The objective has been evaluated at point [0.99] before, using random point [0.938037993291497]\n"}
+,{"stream_name":"stderr","time":6478.578820102,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":6496.459571469,"data":"/usr/local/lib/python3.12/dist-packages/skopt/optimizer/optimizer.py:517: UserWarning: The objective has been evaluated at point [0.99] before, using random point [0.9393672229489904]\n"}
+,{"stream_name":"stderr","time":6496.459620988,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":6514.198773558,"data":"/usr/local/lib/python3.12/dist-packages/skopt/optimizer/optimizer.py:517: UserWarning: The objective has been evaluated at point [0.99] before, using random point [0.9538181475983419]\n"}
+,{"stream_name":"stderr","time":6514.198822579,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":6602.200044195,"data":"/usr/local/lib/python3.12/dist-packages/skopt/optimizer/optimizer.py:517: UserWarning: The objective has been evaluated at point [0.99] before, using random point [0.9186310699006778]\n"}
+,{"stream_name":"stderr","time":6602.200094104,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":6619.697912391,"data":"/usr/local/lib/python3.12/dist-packages/skopt/optimizer/optimizer.py:517: UserWarning: The objective has been evaluated at point [0.99] before, using random point [0.9776357970993855]\n"}
+,{"stream_name":"stderr","time":6619.697961287,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":6637.677560071,"data":"/usr/local/lib/python3.12/dist-packages/skopt/optimizer/optimizer.py:517: UserWarning: The objective has been evaluated at point [0.99] before, using random point [0.9813411641140932]\n"}
+,{"stream_name":"stderr","time":6637.677607893,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":6672.43685155,"data":"  nu=1e-05 seed=123: fitting... rel_l2=5.826236  best_w=0.9830  J=1.027e-02  time=454.5s\n"}
+,{"stream_name":"stderr","time":6988.494628297,"data":"/usr/local/lib/python3.12/dist-packages/skopt/optimizer/optimizer.py:517: UserWarning: The objective has been evaluated at point [0.99] before, using random point [0.9847122276963753]\n"}
+,{"stream_name":"stderr","time":6988.494702698,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":7006.122011199,"data":"/usr/local/lib/python3.12/dist-packages/skopt/optimizer/optimizer.py:517: UserWarning: The objective has been evaluated at point [0.99] before, using random point [0.9273164779613063]\n"}
+,{"stream_name":"stderr","time":7006.122064033,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":7023.550141301,"data":"/usr/local/lib/python3.12/dist-packages/skopt/optimizer/optimizer.py:517: UserWarning: The objective has been evaluated at point [0.99] before, using random point [0.9547162567641038]\n"}
+,{"stream_name":"stderr","time":7023.550214354,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":7041.126945706,"data":"/usr/local/lib/python3.12/dist-packages/skopt/optimizer/optimizer.py:517: UserWarning: The objective has been evaluated at point [0.99] before, using random point [0.9496486221957879]\n"}
+,{"stream_name":"stderr","time":7041.127023055,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":7058.878429806,"data":"/usr/local/lib/python3.12/dist-packages/skopt/optimizer/optimizer.py:517: UserWarning: The objective has been evaluated at point [0.99] before, using random point [0.9664885296611477]\n"}
+,{"stream_name":"stderr","time":7058.878482302,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":7076.608648834,"data":"/usr/local/lib/python3.12/dist-packages/skopt/optimizer/optimizer.py:517: UserWarning: The objective has been evaluated at point [0.99] before, using random point [0.9658903997405085]\n"}
+,{"stream_name":"stderr","time":7076.608716144,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":7094.230983882,"data":"/usr/local/lib/python3.12/dist-packages/skopt/optimizer/optimizer.py:517: UserWarning: The objective has been evaluated at point [0.99] before, using random point [0.97803032105646]\n"}
+,{"stream_name":"stderr","time":7094.231056131,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":7128.529286242,"data":"  nu=1e-05 seed=7: fitting... rel_l2=5.472499  best_w=0.9849  J=1.192e-02  time=456.0s\n"}
+,{"stream_name":"stdout","time":7128.529384705,"data":"\n"}
+,{"stream_name":"stdout","time":7128.529395611,"data":"======================================================================\n"}
+,{"stream_name":"stdout","time":7128.529499372,"data":"RUNNING: SCIO (PINN, 800 NFEs)\n"}
+,{"stream_name":"stdout","time":7128.529640344,"data":"======================================================================\n"}
+,{"stream_name":"stdout","time":7128.778065261,"data":"  nu=1e-01 seed=42: training... FAILED: CUDA error: no kernel image is available for execution on the device\n"}
+,{"stream_name":"stdout","time":7128.778100497,"data":"Search for `cudaErrorNoKernelImageForDevice' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\n"}
+,{"stream_name":"stdout","time":7128.778112543,"data":"CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\n"}
+,{"stream_name":"stdout","time":7128.778115709,"data":"For debugging consider passing CUDA_LAUNCH_BLOCKING=1\n"}
+,{"stream_name":"stdout","time":7128.778118444,"data":"Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n"}
+,{"stream_name":"stdout","time":7128.778121733,"data":"\n"}
+,{"stream_name":"stdout","time":7128.778921946,"data":"  nu=1e-01 seed=123: training... FAILED: CUDA error: no kernel image is available for execution on the device\n"}
+,{"stream_name":"stdout","time":7128.778944508,"data":"Search for `cudaErrorNoKernelImageForDevice' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\n"}
+,{"stream_name":"stdout","time":7128.778948025,"data":"CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\n"}
+,{"stream_name":"stdout","time":7128.778966068,"data":"For debugging consider passing CUDA_LAUNCH_BLOCKING=1\n"}
+,{"stream_name":"stdout","time":7128.778970368,"data":"Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n"}
+,{"stream_name":"stdout","time":7128.778974093,"data":"\n"}
+,{"stream_name":"stdout","time":7128.779537217,"data":"  nu=1e-01 seed=7: training... FAILED: CUDA error: no kernel image is available for execution on the device\n"}
+,{"stream_name":"stdout","time":7128.779547477,"data":"Search for `cudaErrorNoKernelImageForDevice' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\n"}
+,{"stream_name":"stdout","time":7128.779551647,"data":"CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\n"}
+,{"stream_name":"stdout","time":7128.779555623,"data":"For debugging consider passing CUDA_LAUNCH_BLOCKING=1\n"}
+,{"stream_name":"stdout","time":7128.779561069,"data":"Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n"}
+,{"stream_name":"stdout","time":7128.779569179,"data":"\n"}
+,{"stream_name":"stdout","time":7128.780175313,"data":"  nu=1e-02 seed=42: training... FAILED: CUDA error: no kernel image is available for execution on the device\n"}
+,{"stream_name":"stdout","time":7128.780189337,"data":"Search for `cudaErrorNoKernelImageForDevice' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\n"}
+,{"stream_name":"stdout","time":7128.780194091,"data":"CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\n"}
+,{"stream_name":"stdout","time":7128.78020397,"data":"For debugging consider passing CUDA_LAUNCH_BLOCKING=1\n"}
+,{"stream_name":"stdout","time":7128.780207483,"data":"Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n"}
+,{"stream_name":"stdout","time":7128.780210386,"data":"\n"}
+,{"stream_name":"stdout","time":7128.780728525,"data":"  nu=1e-02 seed=123: training... FAILED: CUDA error: no kernel image is available for execution on the device\n"}
+,{"stream_name":"stdout","time":7128.780742764,"data":"Search for `cudaErrorNoKernelImageForDevice' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\n"}
+,{"stream_name":"stdout","time":7128.78077937,"data":"CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\n"}
+,{"stream_name":"stdout","time":7128.780784639,"data":"For debugging consider passing CUDA_LAUNCH_BLOCKING=1\n"}
+,{"stream_name":"stdout","time":7128.780788922,"data":"Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n"}
+,{"stream_name":"stdout","time":7128.780793558,"data":"\n"}
+,{"stream_name":"stdout","time":7128.781216572,"data":"  nu=1e-02 seed=7: training... FAILED: CUDA error: no kernel image is available for execution on the device\n"}
+,{"stream_name":"stdout","time":7128.781236358,"data":"Search for `cudaErrorNoKernelImageForDevice' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\n"}
+,{"stream_name":"stdout","time":7128.781242432,"data":"CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\n"}
+,{"stream_name":"stdout","time":7128.781249915,"data":"For debugging consider passing CUDA_LAUNCH_BLOCKING=1\n"}
+,{"stream_name":"stdout","time":7128.781252561,"data":"Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n"}
+,{"stream_name":"stdout","time":7128.781255132,"data":"\n"}
+,{"stream_name":"stdout","time":7128.78173646,"data":"  nu=1e-03 seed=42: training... FAILED: CUDA error: no kernel image is available for execution on the device\n"}
+,{"stream_name":"stdout","time":7128.781754776,"data":"Search for `cudaErrorNoKernelImageForDevice' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\n"}
+,{"stream_name":"stdout","time":7128.781758119,"data":"CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\n"}
+,{"stream_name":"stdout","time":7128.781760875,"data":"For debugging consider passing CUDA_LAUNCH_BLOCKING=1\n"}
+,{"stream_name":"stdout","time":7128.781763461,"data":"Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n"}
+,{"stream_name":"stdout","time":7128.781765992,"data":"\n"}
+,{"stream_name":"stdout","time":7128.782229387,"data":"  nu=1e-03 seed=123: training... FAILED: CUDA error: no kernel image is available for execution on the device\n"}
+,{"stream_name":"stdout","time":7128.782243356,"data":"Search for `cudaErrorNoKernelImageForDevice' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\n"}
+,{"stream_name":"stdout","time":7128.782249567,"data":"CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\n"}
+,{"stream_name":"stdout","time":7128.782257616,"data":"For debugging consider passing CUDA_LAUNCH_BLOCKING=1\n"}
+,{"stream_name":"stdout","time":7128.782260425,"data":"Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n"}
+,{"stream_name":"stdout","time":7128.782263188,"data":"\n"}
+,{"stream_name":"stdout","time":7128.782740421,"data":"  nu=1e-03 seed=7: training... FAILED: CUDA error: no kernel image is available for execution on the device\n"}
+,{"stream_name":"stdout","time":7128.782759878,"data":"Search for `cudaErrorNoKernelImageForDevice' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\n"}
+,{"stream_name":"stdout","time":7128.782763045,"data":"CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\n"}
+,{"stream_name":"stdout","time":7128.782766005,"data":"For debugging consider passing CUDA_LAUNCH_BLOCKING=1\n"}
+,{"stream_name":"stdout","time":7128.78276872,"data":"Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n"}
+,{"stream_name":"stdout","time":7128.782779819,"data":"\n"}
+,{"stream_name":"stdout","time":7128.783209019,"data":"  nu=1e-04 seed=42: training... FAILED: CUDA error: no kernel image is available for execution on the device\n"}
+,{"stream_name":"stdout","time":7128.783218943,"data":"Search for `cudaErrorNoKernelImageForDevice' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\n"}
+,{"stream_name":"stdout","time":7128.783257773,"data":"CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\n"}
+,{"stream_name":"stdout","time":7128.783262438,"data":"For debugging consider passing CUDA_LAUNCH_BLOCKING=1\n"}
+,{"stream_name":"stdout","time":7128.783266877,"data":"Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n"}
+,{"stream_name":"stdout","time":7128.783271106,"data":"\n"}
+,{"stream_name":"stdout","time":7128.78381068,"data":"  nu=1e-04 seed=123: training... FAILED: CUDA error: no kernel image is available for execution on the device\n"}
+,{"stream_name":"stdout","time":7128.78382626,"data":"Search for `cudaErrorNoKernelImageForDevice' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\n"}
+,{"stream_name":"stdout","time":7128.783833994,"data":"CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\n"}
+,{"stream_name":"stdout","time":7128.783836756,"data":"For debugging consider passing CUDA_LAUNCH_BLOCKING=1\n"}
+,{"stream_name":"stdout","time":7128.783839197,"data":"Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n"}
+,{"stream_name":"stdout","time":7128.783841705,"data":"\n"}
+,{"stream_name":"stdout","time":7128.78431153,"data":"  nu=1e-04 seed=7: training... FAILED: CUDA error: no kernel image is available for execution on the device\n"}
+,{"stream_name":"stdout","time":7128.784320564,"data":"Search for `cudaErrorNoKernelImageForDevice' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\n"}
+,{"stream_name":"stdout","time":7128.784343079,"data":"CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\n"}
+,{"stream_name":"stdout","time":7128.784347522,"data":"For debugging consider passing CUDA_LAUNCH_BLOCKING=1\n"}
+,{"stream_name":"stdout","time":7128.784351631,"data":"Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n"}
+,{"stream_name":"stdout","time":7128.784355701,"data":"\n"}
+,{"stream_name":"stdout","time":7128.784876675,"data":"  nu=1e-05 seed=42: training... FAILED: CUDA error: no kernel image is available for execution on the device\n"}
+,{"stream_name":"stdout","time":7128.784889858,"data":"Search for `cudaErrorNoKernelImageForDevice' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\n"}
+,{"stream_name":"stdout","time":7128.784894311,"data":"CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\n"}
+,{"stream_name":"stdout","time":7128.78489829,"data":"For debugging consider passing CUDA_LAUNCH_BLOCKING=1\n"}
+,{"stream_name":"stdout","time":7128.784901969,"data":"Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n"}
+,{"stream_name":"stdout","time":7128.784910969,"data":"\n"}
+,{"stream_name":"stdout","time":7128.78533845,"data":"  nu=1e-05 seed=123: training... FAILED: CUDA error: no kernel image is available for execution on the device\n"}
+,{"stream_name":"stdout","time":7128.785347357,"data":"Search for `cudaErrorNoKernelImageForDevice' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\n"}
+,{"stream_name":"stdout","time":7128.785361262,"data":"CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\n"}
+,{"stream_name":"stdout","time":7128.785365359,"data":"For debugging consider passing CUDA_LAUNCH_BLOCKING=1\n"}
+,{"stream_name":"stdout","time":7128.785374211,"data":"Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n"}
+,{"stream_name":"stdout","time":7128.785377381,"data":"\n"}
+,{"stream_name":"stdout","time":7128.785858237,"data":"  nu=1e-05 seed=7: training... FAILED: CUDA error: no kernel image is available for execution on the device\n"}
+,{"stream_name":"stdout","time":7128.785873046,"data":"Search for `cudaErrorNoKernelImageForDevice' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\n"}
+,{"stream_name":"stdout","time":7128.785880594,"data":"CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\n"}
+,{"stream_name":"stdout","time":7128.785883654,"data":"For debugging consider passing CUDA_LAUNCH_BLOCKING=1\n"}
+,{"stream_name":"stdout","time":7128.785886306,"data":"Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n"}
+,{"stream_name":"stdout","time":7128.785888788,"data":"\n"}
+,{"stream_name":"stdout","time":7128.785891165,"data":"\n"}
+,{"stream_name":"stdout","time":7128.785893562,"data":"======================================================================\n"}
+,{"stream_name":"stdout","time":7128.785895993,"data":"RUNNING: Adam (PINN, 800 NFEs)\n"}
+,{"stream_name":"stdout","time":7128.785898454,"data":"======================================================================\n"}
+,{"stream_name":"stdout","time":7128.786375526,"data":"  nu=1e-01 seed=42: training... FAILED: CUDA error: no kernel image is available for execution on the device\n"}
+,{"stream_name":"stdout","time":7128.786384935,"data":"Search for `cudaErrorNoKernelImageForDevice' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\n"}
+,{"stream_name":"stdout","time":7128.786390131,"data":"CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\n"}
+,{"stream_name":"stdout","time":7128.786394284,"data":"For debugging consider passing CUDA_LAUNCH_BLOCKING=1\n"}
+,{"stream_name":"stdout","time":7128.786398179,"data":"Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n"}
+,{"stream_name":"stdout","time":7128.786402196,"data":"\n"}
+,{"stream_name":"stdout","time":7128.786915453,"data":"  nu=1e-01 seed=123: training... FAILED: CUDA error: no kernel image is available for execution on the device\n"}
+,{"stream_name":"stdout","time":7128.786928421,"data":"Search for `cudaErrorNoKernelImageForDevice' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\n"}
+,{"stream_name":"stdout","time":7128.786932952,"data":"CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\n"}
+,{"stream_name":"stdout","time":7128.786936956,"data":"For debugging consider passing CUDA_LAUNCH_BLOCKING=1\n"}
+,{"stream_name":"stdout","time":7128.78694068,"data":"Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n"}
+,{"stream_name":"stdout","time":7128.786950269,"data":"\n"}
+,{"stream_name":"stdout","time":7128.787365775,"data":"  nu=1e-01 seed=7: training... FAILED: CUDA error: no kernel image is available for execution on the device\n"}
+,{"stream_name":"stdout","time":7128.787374161,"data":"Search for `cudaErrorNoKernelImageForDevice' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\n"}
+,{"stream_name":"stdout","time":7128.787387641,"data":"CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\n"}
+,{"stream_name":"stdout","time":7128.787391633,"data":"For debugging consider passing CUDA_LAUNCH_BLOCKING=1\n"}
+,{"stream_name":"stdout","time":7128.787397163,"data":"Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n"}
+,{"stream_name":"stdout","time":7128.78740433,"data":"\n"}
+,{"stream_name":"stdout","time":7128.787862155,"data":"  nu=1e-02 seed=42: training... FAILED: CUDA error: no kernel image is available for execution on the device\n"}
+,{"stream_name":"stdout","time":7128.787874693,"data":"Search for `cudaErrorNoKernelImageForDevice' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\n"}
+,{"stream_name":"stdout","time":7128.787879198,"data":"CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\n"}
+,{"stream_name":"stdout","time":7128.787883061,"data":"For debugging consider passing CUDA_LAUNCH_BLOCKING=1\n"}
+,{"stream_name":"stdout","time":7128.787886708,"data":"Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n"}
+,{"stream_name":"stdout","time":7128.787895432,"data":"\n"}
+,{"stream_name":"stdout","time":7128.788322329,"data":"  nu=1e-02 seed=123: training... FAILED: CUDA error: no kernel image is available for execution on the device\n"}
+,{"stream_name":"stdout","time":7128.788331001,"data":"Search for `cudaErrorNoKernelImageForDevice' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\n"}
+,{"stream_name":"stdout","time":7128.788335977,"data":"CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\n"}
+,{"stream_name":"stdout","time":7128.788339895,"data":"For debugging consider passing CUDA_LAUNCH_BLOCKING=1\n"}
+,{"stream_name":"stdout","time":7128.788343448,"data":"Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n"}
+,{"stream_name":"stdout","time":7128.788347062,"data":"\n"}
+,{"stream_name":"stdout","time":7128.788781295,"data":"  nu=1e-02 seed=7: training... FAILED: CUDA error: no kernel image is available for execution on the device\n"}
+,{"stream_name":"stdout","time":7128.788795838,"data":"Search for `cudaErrorNoKernelImageForDevice' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\n"}
+,{"stream_name":"stdout","time":7128.788800223,"data":"CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\n"}
+,{"stream_name":"stdout","time":7128.788804473,"data":"For debugging consider passing CUDA_LAUNCH_BLOCKING=1\n"}
+,{"stream_name":"stdout","time":7128.788808344,"data":"Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n"}
+,{"stream_name":"stdout","time":7128.788812614,"data":"\n"}
+,{"stream_name":"stdout","time":7128.789313886,"data":"  nu=1e-03 seed=42: training... FAILED: CUDA error: no kernel image is available for execution on the device\n"}
+,{"stream_name":"stdout","time":7128.789322072,"data":"Search for `cudaErrorNoKernelImageForDevice' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\n"}
+,{"stream_name":"stdout","time":7128.789331215,"data":"CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\n"}
+,{"stream_name":"stdout","time":7128.789334223,"data":"For debugging consider passing CUDA_LAUNCH_BLOCKING=1\n"}
+,{"stream_name":"stdout","time":7128.789336583,"data":"Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n"}
+,{"stream_name":"stdout","time":7128.789345311,"data":"\n"}
+,{"stream_name":"stdout","time":7128.789669908,"data":"  nu=1e-03 seed=123: training... FAILED: CUDA error: no kernel image is available for execution on the device\n"}
+,{"stream_name":"stdout","time":7128.789677811,"data":"Search for `cudaErrorNoKernelImageForDevice' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\n"}
+,{"stream_name":"stdout","time":7128.789700485,"data":"CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\n"}
+,{"stream_name":"stdout","time":7128.789709743,"data":"For debugging consider passing CUDA_LAUNCH_BLOCKING=1\n"}
+,{"stream_name":"stdout","time":7128.789714393,"data":"Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n"}
+,{"stream_name":"stdout","time":7128.7897184,"data":"\n"}
+,{"stream_name":"stdout","time":7128.790141582,"data":"  nu=1e-03 seed=7: training... FAILED: CUDA error: no kernel image is available for execution on the device\n"}
+,{"stream_name":"stdout","time":7128.790150533,"data":"Search for `cudaErrorNoKernelImageForDevice' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\n"}
+,{"stream_name":"stdout","time":7128.790155463,"data":"CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\n"}
+,{"stream_name":"stdout","time":7128.790159582,"data":"For debugging consider passing CUDA_LAUNCH_BLOCKING=1\n"}
+,{"stream_name":"stdout","time":7128.790163272,"data":"Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n"}
+,{"stream_name":"stdout","time":7128.7901669,"data":"\n"}
+,{"stream_name":"stdout","time":7128.790636229,"data":"  nu=1e-04 seed=42: training... FAILED: CUDA error: no kernel image is available for execution on the device\n"}
+,{"stream_name":"stdout","time":7128.790644629,"data":"Search for `cudaErrorNoKernelImageForDevice' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\n"}
+,{"stream_name":"stdout","time":7128.790649046,"data":"CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\n"}
+,{"stream_name":"stdout","time":7128.7906589,"data":"For debugging consider passing CUDA_LAUNCH_BLOCKING=1\n"}
+,{"stream_name":"stdout","time":7128.790661999,"data":"Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n"}
+,{"stream_name":"stdout","time":7128.790664794,"data":"\n"}
+,{"stream_name":"stdout","time":7128.7911244,"data":"  nu=1e-04 seed=123: training... FAILED: CUDA error: no kernel image is available for execution on the device\n"}
+,{"stream_name":"stdout","time":7128.791137754,"data":"Search for `cudaErrorNoKernelImageForDevice' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\n"}
+,{"stream_name":"stdout","time":7128.791142368,"data":"CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\n"}
+,{"stream_name":"stdout","time":7128.791146532,"data":"For debugging consider passing CUDA_LAUNCH_BLOCKING=1\n"}
+,{"stream_name":"stdout","time":7128.79115235,"data":"Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n"}
+,{"stream_name":"stdout","time":7128.791159478,"data":"\n"}
+,{"stream_name":"stdout","time":7128.79161469,"data":"  nu=1e-04 seed=7: training... FAILED: CUDA error: no kernel image is available for execution on the device\n"}
+,{"stream_name":"stdout","time":7128.791624223,"data":"Search for `cudaErrorNoKernelImageForDevice' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\n"}
+,{"stream_name":"stdout","time":7128.791643688,"data":"CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\n"}
+,{"stream_name":"stdout","time":7128.791646935,"data":"For debugging consider passing CUDA_LAUNCH_BLOCKING=1\n"}
+,{"stream_name":"stdout","time":7128.79164954,"data":"Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n"}
+,{"stream_name":"stdout","time":7128.791652128,"data":"\n"}
+,{"stream_name":"stdout","time":7128.792105441,"data":"  nu=1e-05 seed=42: training... FAILED: CUDA error: no kernel image is available for execution on the device\n"}
+,{"stream_name":"stdout","time":7128.792118637,"data":"Search for `cudaErrorNoKernelImageForDevice' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\n"}
+,{"stream_name":"stdout","time":7128.792122879,"data":"CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\n"}
+,{"stream_name":"stdout","time":7128.792128561,"data":"For debugging consider passing CUDA_LAUNCH_BLOCKING=1\n"}
+,{"stream_name":"stdout","time":7128.792135465,"data":"Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n"}
+,{"stream_name":"stdout","time":7128.792138187,"data":"\n"}
+,{"stream_name":"stdout","time":7128.792702656,"data":"  nu=1e-05 seed=123: training... FAILED: CUDA error: no kernel image is available for execution on the device\n"}
+,{"stream_name":"stdout","time":7128.792739075,"data":"Search for `cudaErrorNoKernelImageForDevice' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\n"}
+,{"stream_name":"stdout","time":7128.792742813,"data":"CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\n"}
+,{"stream_name":"stdout","time":7128.792745882,"data":"For debugging consider passing CUDA_LAUNCH_BLOCKING=1\n"}
+,{"stream_name":"stdout","time":7128.792748482,"data":"Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n"}
+,{"stream_name":"stdout","time":7128.792751075,"data":"\n"}
+,{"stream_name":"stdout","time":7128.793136248,"data":"  nu=1e-05 seed=7: training... FAILED: CUDA error: no kernel image is available for execution on the device\n"}
+,{"stream_name":"stdout","time":7128.793153281,"data":"Search for `cudaErrorNoKernelImageForDevice' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\n"}
+,{"stream_name":"stdout","time":7128.793159291,"data":"CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\n"}
+,{"stream_name":"stdout","time":7128.793164581,"data":"For debugging consider passing CUDA_LAUNCH_BLOCKING=1\n"}
+,{"stream_name":"stdout","time":7128.793168582,"data":"Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n"}
+,{"stream_name":"stdout","time":7128.793173346,"data":"\n"}
+,{"stream_name":"stdout","time":7128.793177199,"data":"\n"}
+,{"stream_name":"stdout","time":7128.793181166,"data":"======================================================================\n"}
+,{"stream_name":"stdout","time":7128.793185102,"data":"RUNNING: L-BFGS (PINN, 800 NFEs)\n"}
+,{"stream_name":"stdout","time":7128.793189086,"data":"======================================================================\n"}
+,{"stream_name":"stdout","time":7128.793600869,"data":"  nu=1e-01 seed=42: training... FAILED: CUDA error: no kernel image is available for execution on the device\n"}
+,{"stream_name":"stdout","time":7128.793611237,"data":"Search for `cudaErrorNoKernelImageForDevice' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\n"}
+,{"stream_name":"stdout","time":7128.793626062,"data":"CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\n"}
+,{"stream_name":"stdout","time":7128.793632638,"data":"For debugging consider passing CUDA_LAUNCH_BLOCKING=1\n"}
+,{"stream_name":"stdout","time":7128.793647179,"data":"Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n"}
+,{"stream_name":"stdout","time":7128.793649962,"data":"\n"}
+,{"stream_name":"stdout","time":7128.794185794,"data":"  nu=1e-01 seed=123: training... FAILED: CUDA error: no kernel image is available for execution on the device\n"}
+,{"stream_name":"stdout","time":7128.79420602,"data":"Search for `cudaErrorNoKernelImageForDevice' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\n"}
+,{"stream_name":"stdout","time":7128.794211478,"data":"CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\n"}
+,{"stream_name":"stdout","time":7128.7942418,"data":"For debugging consider passing CUDA_LAUNCH_BLOCKING=1\n"}
+,{"stream_name":"stdout","time":7128.794246739,"data":"Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n"}
+,{"stream_name":"stdout","time":7128.794251268,"data":"\n"}
+,{"stream_name":"stdout","time":7128.794665699,"data":"  nu=1e-01 seed=7: training... FAILED: CUDA error: no kernel image is available for execution on the device\n"}
+,{"stream_name":"stdout","time":7128.794677496,"data":"Search for `cudaErrorNoKernelImageForDevice' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\n"}
+,{"stream_name":"stdout","time":7128.794719014,"data":"CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\n"}
+,{"stream_name":"stdout","time":7128.794724229,"data":"For debugging consider passing CUDA_LAUNCH_BLOCKING=1\n"}
+,{"stream_name":"stdout","time":7128.794728587,"data":"Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n"}
+,{"stream_name":"stdout","time":7128.794733191,"data":"\n"}
+,{"stream_name":"stdout","time":7128.795143172,"data":"  nu=1e-02 seed=42: training... FAILED: CUDA error: no kernel image is available for execution on the device\n"}
+,{"stream_name":"stdout","time":7128.795158375,"data":"Search for `cudaErrorNoKernelImageForDevice' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\n"}
+,{"stream_name":"stdout","time":7128.795162772,"data":"CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\n"}
+,{"stream_name":"stdout","time":7128.795166278,"data":"For debugging consider passing CUDA_LAUNCH_BLOCKING=1\n"}
+,{"stream_name":"stdout","time":7128.79516895,"data":"Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n"}
+,{"stream_name":"stdout","time":7128.795171628,"data":"\n"}
+,{"stream_name":"stdout","time":7128.795631523,"data":"  nu=1e-02 seed=123: training... FAILED: CUDA error: no kernel image is available for execution on the device\n"}
+,{"stream_name":"stdout","time":7128.795641785,"data":"Search for `cudaErrorNoKernelImageForDevice' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\n"}
+,{"stream_name":"stdout","time":7128.795649242,"data":"CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\n"}
+,{"stream_name":"stdout","time":7128.79565192,"data":"For debugging consider passing CUDA_LAUNCH_BLOCKING=1\n"}
+,{"stream_name":"stdout","time":7128.795655054,"data":"Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n"}
+,{"stream_name":"stdout","time":7128.795675135,"data":"\n"}
+,{"stream_name":"stdout","time":7128.796118532,"data":"  nu=1e-02 seed=7: training... FAILED: CUDA error: no kernel image is available for execution on the device\n"}
+,{"stream_name":"stdout","time":7128.796129946,"data":"Search for `cudaErrorNoKernelImageForDevice' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\n"}
+,{"stream_name":"stdout","time":7128.796133282,"data":"CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\n"}
+,{"stream_name":"stdout","time":7128.79613609,"data":"For debugging consider passing CUDA_LAUNCH_BLOCKING=1\n"}
+,{"stream_name":"stdout","time":7128.796138704,"data":"Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n"}
+,{"stream_name":"stdout","time":7128.796141369,"data":"\n"}
+,{"stream_name":"stdout","time":7128.796567653,"data":"  nu=1e-03 seed=42: training... FAILED: CUDA error: no kernel image is available for execution on the device\n"}
+,{"stream_name":"stdout","time":7128.796577003,"data":"Search for `cudaErrorNoKernelImageForDevice' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\n"}
+,{"stream_name":"stdout","time":7128.796587153,"data":"CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\n"}
+,{"stream_name":"stdout","time":7128.796590001,"data":"For debugging consider passing CUDA_LAUNCH_BLOCKING=1\n"}
+,{"stream_name":"stdout","time":7128.796592575,"data":"Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n"}
+,{"stream_name":"stdout","time":7128.796595271,"data":"\n"}
+,{"stream_name":"stdout","time":7128.797044063,"data":"  nu=1e-03 seed=123: training... FAILED: CUDA error: no kernel image is available for execution on the device\n"}
+,{"stream_name":"stdout","time":7128.797054712,"data":"Search for `cudaErrorNoKernelImageForDevice' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\n"}
+,{"stream_name":"stdout","time":7128.797057583,"data":"CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\n"}
+,{"stream_name":"stdout","time":7128.797060258,"data":"For debugging consider passing CUDA_LAUNCH_BLOCKING=1\n"}
+,{"stream_name":"stdout","time":7128.797062811,"data":"Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n"}
+,{"stream_name":"stdout","time":7128.797083542,"data":"\n"}
+,{"stream_name":"stdout","time":7128.79759413,"data":"  nu=1e-03 seed=7: training... FAILED: CUDA error: no kernel image is available for execution on the device\n"}
+,{"stream_name":"stdout","time":7128.79761155,"data":"Search for `cudaErrorNoKernelImageForDevice' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\n"}
+,{"stream_name":"stdout","time":7128.797614868,"data":"CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\n"}
+,{"stream_name":"stdout","time":7128.797617713,"data":"For debugging consider passing CUDA_LAUNCH_BLOCKING=1\n"}
+,{"stream_name":"stdout","time":7128.797620446,"data":"Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n"}
+,{"stream_name":"stdout","time":7128.797623176,"data":"\n"}
+,{"stream_name":"stdout","time":7128.79805248,"data":"  nu=1e-04 seed=42: training... FAILED: CUDA error: no kernel image is available for execution on the device\n"}
+,{"stream_name":"stdout","time":7128.798071671,"data":"Search for `cudaErrorNoKernelImageForDevice' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\n"}
+,{"stream_name":"stdout","time":7128.798082365,"data":"CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\n"}
+,{"stream_name":"stdout","time":7128.798085302,"data":"For debugging consider passing CUDA_LAUNCH_BLOCKING=1\n"}
+,{"stream_name":"stdout","time":7128.798087943,"data":"Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n"}
+,{"stream_name":"stdout","time":7128.798090645,"data":"\n"}
+,{"stream_name":"stdout","time":7128.798751751,"data":"  nu=1e-04 seed=123: training... FAILED: CUDA error: no kernel image is available for execution on the device\n"}
+,{"stream_name":"stdout","time":7128.798773683,"data":"Search for `cudaErrorNoKernelImageForDevice' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\n"}
+,{"stream_name":"stdout","time":7128.798780107,"data":"CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\n"}
+,{"stream_name":"stdout","time":7128.798784963,"data":"For debugging consider passing CUDA_LAUNCH_BLOCKING=1\n"}
+,{"stream_name":"stdout","time":7128.79878892,"data":"Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n"}
+,{"stream_name":"stdout","time":7128.798792898,"data":"\n"}
+,{"stream_name":"stdout","time":7128.799260726,"data":"  nu=1e-04 seed=7: training... FAILED: CUDA error: no kernel image is available for execution on the device\n"}
+,{"stream_name":"stdout","time":7128.799270078,"data":"Search for `cudaErrorNoKernelImageForDevice' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\n"}
+,{"stream_name":"stdout","time":7128.799274518,"data":"CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\n"}
+,{"stream_name":"stdout","time":7128.799296073,"data":"For debugging consider passing CUDA_LAUNCH_BLOCKING=1\n"}
+,{"stream_name":"stdout","time":7128.79930673,"data":"Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n"}
+,{"stream_name":"stdout","time":7128.799309797,"data":"\n"}
+,{"stream_name":"stdout","time":7128.799764145,"data":"  nu=1e-05 seed=42: training... FAILED: CUDA error: no kernel image is available for execution on the device\n"}
+,{"stream_name":"stdout","time":7128.799778313,"data":"Search for `cudaErrorNoKernelImageForDevice' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\n"}
+,{"stream_name":"stdout","time":7128.799783138,"data":"CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\n"}
+,{"stream_name":"stdout","time":7128.799793498,"data":"For debugging consider passing CUDA_LAUNCH_BLOCKING=1\n"}
+,{"stream_name":"stdout","time":7128.799796334,"data":"Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n"}
+,{"stream_name":"stdout","time":7128.799799193,"data":"\n"}
+,{"stream_name":"stdout","time":7128.800249759,"data":"  nu=1e-05 seed=123: training... FAILED: CUDA error: no kernel image is available for execution on the device\n"}
+,{"stream_name":"stdout","time":7128.800259493,"data":"Search for `cudaErrorNoKernelImageForDevice' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\n"}
+,{"stream_name":"stdout","time":7128.800264086,"data":"CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\n"}
+,{"stream_name":"stdout","time":7128.80026827,"data":"For debugging consider passing CUDA_LAUNCH_BLOCKING=1\n"}
+,{"stream_name":"stdout","time":7128.800287266,"data":"Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n"}
+,{"stream_name":"stdout","time":7128.800290439,"data":"\n"}
+,{"stream_name":"stdout","time":7128.800719541,"data":"  nu=1e-05 seed=7: training... FAILED: CUDA error: no kernel image is available for execution on the device\n"}
+,{"stream_name":"stdout","time":7128.800739391,"data":"Search for `cudaErrorNoKernelImageForDevice' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\n"}
+,{"stream_name":"stdout","time":7128.800742803,"data":"CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\n"}
+,{"stream_name":"stdout","time":7128.800745566,"data":"For debugging consider passing CUDA_LAUNCH_BLOCKING=1\n"}
+,{"stream_name":"stdout","time":7128.800748395,"data":"Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n"}
+,{"stream_name":"stdout","time":7128.800751089,"data":"\n"}
+,{"stream_name":"stdout","time":7128.801820269,"data":"\n"}
+,{"stream_name":"stdout","time":7128.801840096,"data":"Results written to /kaggle/working/convdiff_results/results.csv\n"}
+,{"stream_name":"stdout","time":7129.590622768,"data":"Headline plot saved to /kaggle/working/convdiff_results/convdiff_spp_results.png\n"}
+,{"stream_name":"stdout","time":7129.590658444,"data":"\n"}
+,{"stream_name":"stdout","time":7129.590664155,"data":"======================================================================\n"}
+,{"stream_name":"stdout","time":7129.590669693,"data":"FAILURE-MODE ANALYSIS (nu = 1e-5)\n"}
+,{"stream_name":"stdout","time":7129.590674363,"data":"======================================================================\n"}
+,{"stream_name":"stdout","time":7129.590678993,"data":"Distinguishing: (a) representation/spectral-bias limit vs (b) optimizer failure vs (c) divergence\n"}
+,{"stream_name":"stdout","time":7129.590724582,"data":"\n"}
+,{"stream_name":"stdout","time":7129.590733191,"data":"  SCIO:\n"}
+,{"stream_name":"stdout","time":7129.590738103,"data":"    Avg final loss: nan\n"}
+,{"stream_name":"stdout","time":7129.590742676,"data":"    Avg rel L2:     nan\n"}
+,{"stream_name":"stdout","time":7129.590747352,"data":"    NaN/diverge:    True\n"}
+,{"stream_name":"stdout","time":7129.590752886,"data":"    Failure modes:  ['exception', 'exception', 'exception']\n"}
+,{"stream_name":"stdout","time":7129.590758076,"data":"    -\u003e Mixed modes across seeds: ['exception', 'exception', 'exception']\n"}
+,{"stream_name":"stdout","time":7129.590763409,"data":"\n"}
+,{"stream_name":"stdout","time":7129.590767455,"data":"  Adam:\n"}
+,{"stream_name":"stdout","time":7129.590771202,"data":"    Avg final loss: nan\n"}
+,{"stream_name":"stdout","time":7129.590775272,"data":"    Avg rel L2:     nan\n"}
+,{"stream_name":"stdout","time":7129.59077932,"data":"    NaN/diverge:    True\n"}
+,{"stream_name":"stdout","time":7129.590783609,"data":"    Failure modes:  ['exception', 'exception', 'exception']\n"}
+,{"stream_name":"stdout","time":7129.590788419,"data":"    -\u003e Mixed modes across seeds: ['exception', 'exception', 'exception']\n"}
+,{"stream_name":"stdout","time":7129.590794221,"data":"\n"}
+,{"stream_name":"stdout","time":7129.590809494,"data":"  L-BFGS:\n"}
+,{"stream_name":"stdout","time":7129.59081458,"data":"    Avg final loss: nan\n"}
+,{"stream_name":"stdout","time":7129.590819028,"data":"    Avg rel L2:     nan\n"}
+,{"stream_name":"stdout","time":7129.590823419,"data":"    NaN/diverge:    True\n"}
+,{"stream_name":"stdout","time":7129.590827672,"data":"    Failure modes:  ['exception', 'exception', 'exception']\n"}
+,{"stream_name":"stdout","time":7129.59083217,"data":"    -\u003e Mixed modes across seeds: ['exception', 'exception', 'exception']\n"}
+,{"stream_name":"stdout","time":7129.590847753,"data":"\n"}
+,{"stream_name":"stdout","time":7129.590853609,"data":"\n"}
+,{"stream_name":"stdout","time":7129.590858031,"data":"======================================================================\n"}
+,{"stream_name":"stdout","time":7129.590862103,"data":"SUMMARY TABLE (mean +/- std rel L2 across seeds)\n"}
+,{"stream_name":"stdout","time":7129.590866108,"data":"======================================================================\n"}
+,{"stream_name":"stdout","time":7129.590870244,"data":"Method          nu=0.1          nu=0.01         nu=0.001        nu=0.0001       nu=1e-05        \n"}
+,{"stream_name":"stdout","time":7129.590874384,"data":"------------------------------------------------------------------------------------------------\n"}
+,{"stream_name":"stdout","time":7129.591399224,"data":"Vanilla-PIELM   1.432e-03+/-1.4e-03 4.181e+00+/-1.5e+00 1.776e+01+/-2.7e-05 2.236e+01+/-4.3e-05 2.236e+01+/-4.4e-05 \n"}
+,{"stream_name":"stdout","time":7129.591719576,"data":"KAPI-ELM        7.457e-08+/-4.3e-08 5.767e-08+/-3.3e-08 8.740e-07+/-1.8e-07 1.983e-04+/-9.9e-05 5.249e+00+/-5.8e-01 \n"}
+,{"stream_name":"stdout","time":7129.591737359,"data":"SCIO            N/A             N/A             N/A             N/A             N/A             \n"}
+,{"stream_name":"stdout","time":7129.591795697,"data":"Adam            N/A             N/A             N/A             N/A             N/A             \n"}
+,{"stream_name":"stdout","time":7129.591928847,"data":"L-BFGS          N/A             N/A             N/A             N/A             N/A             \n"}
+,{"stream_name":"stdout","time":7129.591947131,"data":"\n"}
+,{"stream_name":"stdout","time":7129.591953211,"data":"All results saved to: /kaggle/working/convdiff_results\n"}
+,{"stream_name":"stdout","time":7129.591957785,"data":"Download from Kaggle: Output tab -\u003e convdiff_results/\n"}
+,{"stream_name":"stderr","time":7134.000257745,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":7134.000314336,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":7134.277583229,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":7134.27761598,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":7134.987016434,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":7136.576011039,"data":"[NbConvertApp] Writing 477363 bytes to __results__.html\n"}
+]

@@ -29,64 +29,21 @@ import torch.nn as nn
 from torch import Tensor
 
 # ---------------------------------------------------------------------------
-# Native PINN infrastructure (No SCIO dependencies)
+# Import SCIO infrastructure from the main file
 # ---------------------------------------------------------------------------
-from typing import Callable
-
-DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-
-def set_seed(seed: int) -> None:
-    import random
-    random.seed(seed)
-    np.random.seed(seed)
-    torch.manual_seed(seed)
-    if torch.cuda.is_available():
-        torch.cuda.manual_seed_all(seed)
-
-def to_float(value: float | Tensor | np.ndarray) -> float:
-    if isinstance(value, torch.Tensor):
-        return float(value.detach().cpu().item())
-    if isinstance(value, np.ndarray):
-        return float(value.item())
-    return float(value)
-
-def clear_input_grads(tracked_inputs: list[Tensor]) -> None:
-    for tensor in tracked_inputs:
-        if tensor.grad is not None:
-            tensor.grad = None
-
-class ScaledPINN(nn.Module):
-    def __init__(
-        self,
-        in_dim: int,
-        out_dim: int,
-        bounds: list[tuple[float, float]],
-        width: int = 64,
-        depth: int = 4,
-    ):
-        super().__init__()
-        self.bounds = [(float(lo), float(hi)) for lo, hi in bounds]
-        layers = [nn.Linear(in_dim, width), nn.Tanh()]
-        for _ in range(depth - 1):
-            layers.extend([nn.Linear(width, width), nn.Tanh()])
-        layers.append(nn.Linear(width, out_dim))
-        self.net = nn.Sequential(*layers)
-
-    def _scale(self, tensor: Tensor, low: float, high: float) -> Tensor:
-        return 2.0 * (tensor - low) / (high - low) - 1.0
-
-    def forward(self, *inputs: Tensor) -> Tensor:
-        scaled = [self._scale(tensor, low, high) for tensor, (low, high) in zip(inputs, self.bounds)]
-        return self.net(torch.cat(scaled, dim=1))
-
-from dataclasses import dataclass
-@dataclass
-class ProblemSetup:
-    model: nn.Module
-    loss_components_fn: Callable[[nn.Module], list[Tensor]]
-    tracked_inputs: list[Tensor]
-    rel_l2_fn: Callable[[nn.Module], float]
-
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from SCIO import (
+    DEVICE,
+    PROBLEMS,
+    ProblemSetup,
+    ProblemSpec,
+    ScaledPINN,
+    build_optimizer,
+    clear_input_grads,
+    run_problem,
+    set_seed,
+    to_float,
+)
 
 # ---------------------------------------------------------------------------
 # Exact solution (overflow-safe) — matches EXACT_SOLUTION.m from the repo
@@ -396,76 +353,34 @@ PINN_TARGET_NFE = 800
 
 
 def run_pinn_method(method_name: str, nu: float, seed: int) -> dict:
-    """Run a PINN-based method (Adam, L-BFGS) for a specific nu."""
-    set_seed(seed)
-    setup = make_setup_convdiff_spp(nu)(seed)
-    model = setup.model
-    nfe_limit = PINN_TARGET_NFE
+    """Run a PINN-based method (SCIO, Adam, L-BFGS) for a specific nu."""
+    # Register the problem for this nu value
+    problem_key = f"ConvDiff-SPP-nu{nu:.0e}"
+    PROBLEMS[problem_key] = ProblemSpec(
+        name=problem_key,
+        build_setup=make_setup_convdiff_spp(nu),
+        scion_kwargs=dict(
+            lr=0.001, memory_size=50, burn_in_steps=50,
+            T_high=1.25, max_iter=10, max_step_norm=1.0,
+        ),
+        target_nfe=PINN_TARGET_NFE,
+        adam_lr=1e-3,
+        lbfgs_lr=0.5,
+        lbfgs_history_size=50,
+        lbfgs_max_iter=20,
+        multiadam_kwargs=dict(loss_group_idx=[1], group_weights=(0.5, 0.5)),
+    )
 
-    if method_name == "Adam":
-        optimizer = torch.optim.Adam(model.parameters(), lr=1e-3)
-    elif method_name in {"L-BFGS", "LBFGS"}:
-        optimizer = torch.optim.LBFGS(
-            model.parameters(),
-            lr=0.5,
-            max_iter=20,
-            history_size=50,
-            line_search_fn="strong_wolfe",
-        )
-    else:
-        raise ValueError(f"Unsupported local optimizer: {method_name}")
+    result = run_problem(
+        problem_key,
+        optimizer_name=method_name,
+        seed=seed,
+        target_nfe=PINN_TARGET_NFE,
+    )
+    # Clean up to avoid polluting the registry
+    if problem_key in PROBLEMS:
+        del PROBLEMS[problem_key]
 
-    history: dict[str, list[float] | list[int]] = {"loss": [], "nfe": [], "time": []}
-    nfe_counter = 0
-    start_time = time.time()
-
-    def record(loss_value: Tensor) -> None:
-        history["loss"].append(to_float(loss_value))
-        history["nfe"].append(int(nfe_counter))
-        history["time"].append(float(time.time() - start_time))
-
-    if method_name in {"L-BFGS", "LBFGS"}:
-        def closure() -> Tensor:
-            nonlocal nfe_counter
-            optimizer.zero_grad()
-            total = torch.stack(setup.loss_components_fn(model)).sum()
-            total.backward()
-            nfe_counter += 1
-            record(total)
-            clear_input_grads(setup.tracked_inputs)
-            return total
-
-        while nfe_counter < nfe_limit:
-            optimizer.step(closure)
-    else:
-        while nfe_counter < nfe_limit:
-            optimizer.zero_grad()
-            total = torch.stack(setup.loss_components_fn(model)).sum()
-            total.backward()
-            optimizer.step()
-            nfe_counter += 1
-            record(total)
-            clear_input_grads(setup.tracked_inputs)
-
-    peak_memory = 0.0
-    try:
-        import psutil
-        process = psutil.Process()
-        peak_memory = float(process.memory_info().rss / (1024 ** 2))
-    except (ImportError, Exception):
-        peak_memory = 0.0
-
-    result = {
-        "problem": f"ConvDiff-SPP-nu{nu:.0e}",
-        "optimizer": method_name,
-        "seed": seed,
-        "final_loss": float(history["loss"][-1]) if history["loss"] else float("nan"),
-        "rel_l2": float(setup.rel_l2_fn(model)),
-        "final_nfe": int(history["nfe"][-1]) if history["nfe"] else 0,
-        "total_time": float(time.time() - start_time),
-        "peak_memory_mb": peak_memory,
-        "history": history,
-    }
     return result
 
 
@@ -589,9 +504,9 @@ def run_full_experiment(output_dir: Path):
                   f"J={kapi['J']:.3e}  time={kapi['elapsed']:.1f}s")
 
     # ---------------------------------------------------------------
-    # 3. PINN-based methods: Adam, L-BFGS (torch, GPU, 3 seeds)
+    # 3. PINN-based methods: SCIO, Adam, L-BFGS (torch, GPU, 3 seeds)
     # ---------------------------------------------------------------
-    for method_name in ["Adam", "L-BFGS"]:
+    for method_name in ["SCIO", "Adam", "L-BFGS"]:
         print(f"\n{'=' * 70}")
         print(f"RUNNING: {method_name} (PINN, {PINN_TARGET_NFE} NFEs)")
         print("=" * 70)
@@ -749,7 +664,7 @@ def print_failure_mode_analysis(rows: list[dict]):
     print("Distinguishing: (a) representation/spectral-bias limit vs "
           "(b) optimizer failure vs (c) divergence\n")
 
-    pinn_methods = ["Adam", "L-BFGS"]
+    pinn_methods = ["SCIO", "Adam", "L-BFGS"]
     for method in pinn_methods:
         method_rows = [r for r in rows
                        if r["method"] == method and r["nu"] == 1e-5]
